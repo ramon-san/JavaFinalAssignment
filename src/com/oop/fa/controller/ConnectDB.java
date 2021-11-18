@@ -1,5 +1,12 @@
 package com.oop.fa.controller;
 
+<<<<<<< HEAD:src/com/oop/fa/controller/ConnectDB.java
+=======
+import javax.swing.JOptionPane;
+
+
+
+>>>>>>> 9969166f52f6ec354fb2a262618b7b0549eeaaa6:src/com/oop/fa/controller/connectDB
 public class ConnectDB {
 
     static Connection con;
@@ -8,7 +15,7 @@ public class ConnectDB {
     private static final String password = "root";
     private static final String url = "jdbc:mysql://localhost:8889/finalProject?useSSL=no";
 
-    public connectDB(){
+    public ConnectDB(){
 
         try{
 
