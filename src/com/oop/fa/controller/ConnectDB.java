@@ -1,12 +1,10 @@
 package com.oop.fa.controller;
 
-<<<<<<< HEAD:src/com/oop/fa/controller/ConnectDB.java
-=======
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-
-
->>>>>>> 9969166f52f6ec354fb2a262618b7b0549eeaaa6:src/com/oop/fa/controller/connectDB
 public class ConnectDB {
 
     static Connection con;
@@ -16,9 +14,7 @@ public class ConnectDB {
     private static final String url = "jdbc:mysql://localhost:8889/finalProject?useSSL=no";
 
     public ConnectDB(){
-
         try{
-
             Class.forName(driver);
             // Manages the connection to the database
             con = DriverManager.getConnection(url,user,password);
@@ -41,7 +37,6 @@ public class ConnectDB {
     public void DesConnection(){
         if(con == null){
             System.out.println("Connection finished");
-
         }
     }
 
