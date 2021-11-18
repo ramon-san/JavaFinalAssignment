@@ -1,12 +1,6 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+package com.oop.fa.controller;
 
-import javax.swing.JOptionPane;
-
-
-
-public class connectDB {
+public class ConnectDB {
 
     static Connection con;
     private static final String driver = "com.mysql.cj.jdbc.Driver";
