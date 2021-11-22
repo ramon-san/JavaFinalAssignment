@@ -6,37 +6,35 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDB {
-
-    static Connection con;
-    private static final String driver = "com.mysql.cj.jdbc.Driver";
+    static Connection conn;
+    private static final String driver = "com.mysql.jdbc.Driver";
     private static final String user = "root";
     private static final String password = "root";
-    private static final String url = "jdbc:mysql://localhost:8889/finalProject?useSSL=no";
+    private static final String url = "jdbc:mysql://localhost:8889/FinalAssignment?useSSL=no";
 
     public ConnectDB(){
         try{
             Class.forName(driver);
-            // Manages the connection to the database
-            con = DriverManager.getConnection(url,user,password);
-            if (con != null){
-                JOptionPane.showMessageDialog(null, "The database has been connected.","Mens",JOptionPane.INFORMATION_MESSAGE);
+            // Manage the connection to the DB.
+            conn = DriverManager.getConnection(url,user,password);
+            if (conn != null) {
+                JOptionPane.showMessageDialog(null, "Connected to the DB", "Mens", JOptionPane.INFORMATION_MESSAGE);
             }
         }catch (ClassNotFoundException | SQLException e){
             System.out.println("Error code: " + ((SQLException) e).getErrorCode() + "\n" +
                     "SLQState: " + ((SQLException) e).getSQLState() + "\n" +
                     "Message: " + e.getMessage() + "\n");
-            System.out.println("Did not connect.");
+            System.out.println("Not connected");
         }
     }
 
-    // We test the connection in another class
+    // We test the connection from another class.
     public Connection getConnection(){
-        return con;
+        return conn;
     }
-
     public void DesConnection(){
-        if(con == null){
-            System.out.println("Connection finished");
+        if(conn == null){
+            System.out.println("Connection ended");
         }
     }
 
