@@ -12,18 +12,17 @@ public class Main {
         System.out.println("Program initialized.\n");
 
         MainModel processManager = new MainModel();
-        MainView frame = new MainView();
+        MainView frame = new MainView(processManager);
         MainController orchestrator = new MainController(frame, processManager);
 
         /* We know connect to the DB. */
         ConnectDB conn = new ConnectDB();
         QueriesDB queries = new QueriesDB();
-        /* We get the DB result and close our connection. */
+        /* We get the DB results and close our connection. */
         processManager.setFullResult(queries.getFullResultSet(conn));
         conn.closeConnection();
 
-        orchestrator.setPredefinedValues(processManager.getFullResult());
-
+        frame.makeGraphs();
         frame.setVisible(true);
     }
 }
