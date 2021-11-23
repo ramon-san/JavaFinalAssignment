@@ -11,9 +11,10 @@ import javax.swing.JPanel;
 
 public class Histogram extends ApplicationFrame {
     String title, xTitle, yTitle;
-    double[] values;
+    private double[] values;
     int bins;
 
+    /* Constructor. */
     public Histogram(String title, String xTitle, String yTitle, double[] values, int bins){
         super("");
         this.title = title;
@@ -24,11 +25,17 @@ public class Histogram extends ApplicationFrame {
         makeHistogram();
     }
 
+    /* Setter and Getter functions. */
+    public void setValues(double[] values) {
+        this.values = values;
+        makeHistogram();
+    }
+
     public JPanel makeHistogram(){
 
         // Assign values to set
         HistogramDataset dataset = new HistogramDataset();
-        dataset.addSeries("Data", values, 10);
+        dataset.addSeries("Data", values, bins);
 
         JFreeChart histogram = ChartFactory.createHistogram(title, xTitle, yTitle, dataset, PlotOrientation.VERTICAL,
                 true, true, false);

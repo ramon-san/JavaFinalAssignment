@@ -10,15 +10,15 @@ import java.util.ArrayList;
 public class MainView extends JFrame {
     int width = 1100;
     int height = 800;
-    double[] data = {10, 20, 41, 51, 63, 75, 81, 83, 1, 8, 45, 85, 23, 55, 54, 45, 45, 43, 32, 23};
+    double[] data = {10, 20, 41, 51, 63, 75, 81, 83, 1, 8, 45, 85, 23, 55, 54, 45, 45, 43, 32, 23, 2, 5};
     HeaderPanel header = new HeaderPanel();
 
     /* We create our histogram graphs. */
-    Histogram ageHistogram = new Histogram("Age Histogram", "Age", "Population", data, 10);
-    JPanel ageHistogramGraph = new JPanel();
+    public Histogram ageHistogram = new Histogram("Age Histogram", "Age", "Population", data, 10);
+    public JPanel ageHistogramGraph = new JPanel();
     ThreeButtonsVertical buttons = new ThreeButtonsVertical();
-    Histogram diseaseHistogram = new Histogram("Disease Histogram", "Age", "Population", data, 15);
-    JPanel diseaseHistogramGraph = new JPanel();
+    public Histogram diseaseHistogram = new Histogram("Disease Histogram", "Age", "Population", data, 15);
+    public JPanel diseaseHistogramGraph = new JPanel();
     TwoInputAndEnter inputs = new TwoInputAndEnter();
     NormalizedDistribution distribution = new NormalizedDistribution("Example");
     JPanel distributionGraph = new JPanel();
