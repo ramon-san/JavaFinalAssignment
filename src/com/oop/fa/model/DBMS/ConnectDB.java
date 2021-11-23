@@ -38,4 +38,12 @@ public class ConnectDB {
         }
     }
 
+    public void closeConnection() {
+        try {
+            conn.close();
+            System.out.println("The DB was closed successfully.");
+        } catch (SQLException e){
+            System.out.println("Error closing the DB.");
+        };
+    }
 }
