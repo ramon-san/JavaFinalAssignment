@@ -22,18 +22,19 @@ public class Histogram extends ApplicationFrame {
         this.yTitle = yTitle;
         this.values = values;
         this.bins = bins;
-        makeHistogram();
     }
 
     /* Setter and Getter functions. */
     public void setValues(double[] values) {
         this.values = values;
-        makeHistogram();
     }
 
     public JPanel makeHistogram(){
 
         // Assign values to set
+        /*for(double d: values){
+            System.out.println(d);
+        }*/
         HistogramDataset dataset = new HistogramDataset();
         dataset.addSeries("Data", values, bins);
 

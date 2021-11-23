@@ -6,7 +6,6 @@ import com.oop.fa.model.PatientData;
 import com.oop.fa.view.MainView;
 import com.oop.fa.view.ThreeButtonsVertical;
 import com.oop.fa.view.TwoInputAndEnter;
-import sun.lwawt.macosx.CSystemTray;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -26,25 +25,19 @@ public class MainController implements ActionListener {
         TwoInputAndEnter.enterButton.addActionListener(this);
     }
 
-    public void setPredefinedValues(ArrayList<PatientData> fullResult){
-        ArrayList<Byte> byteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "All"));
-        double[] result = byteResult.stream().mapToDouble(Byte::doubleValue).toArray();
-        mainView.ageHistogram.setValues(result);
-        for(double d: result){
-            System.out.println(d);
-        }
-        mainView.ageHistogramGraph = mainView.ageHistogram.makeHistogram();
-        mainView.ageHistogramGraph.updateUI();
-        //mainView.diseaseHistogram.setValues(result);
-    }
-
     public void actionPerformed(ActionEvent buttonClick){
 
         if(buttonClick.getSource() == ThreeButtonsVertical.buttonEpoc){
-            ArrayList<Byte> byteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "Epoc"));
-            double[] result = byteResult.stream().mapToDouble(Byte::doubleValue).toArray();
-            mainView.diseaseHistogram.setValues(result);
-            mainView.diseaseHistogramGraph.updateUI();
+            mainView.changeHistogram("Epoc");
+            mainView.epocHistogramGraph.updateUI();
+        }
+        if (buttonClick.getSource() == ThreeButtonsVertical.buttonAsma){
+            mainView.changeHistogram("Asma");
+            mainView.asmaHistogramGraph.updateUI();
+        }
+        if (buttonClick.getSource() == ThreeButtonsVertical.buttonDiabetes) {
+            mainView.changeHistogram("Diabetes");
+            mainView.diabetesHistogramGraph.updateUI();
         }
     }
 }
