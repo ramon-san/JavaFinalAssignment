@@ -1,9 +1,10 @@
-package com.oop.fa.controller;
+package com.oop.fa.model.DBMS;
 
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class ConnectDB {
     static Connection conn;
@@ -18,6 +19,7 @@ public class ConnectDB {
             // Manage the connection to the DB.
             conn = DriverManager.getConnection(url,user,password);
             if (conn != null) {
+                System.out.println("The DB was opened successfully");
                 JOptionPane.showMessageDialog(null, "Connected to the DB", "Mens", JOptionPane.INFORMATION_MESSAGE);
             }
         }catch (ClassNotFoundException | SQLException e){
@@ -32,18 +34,13 @@ public class ConnectDB {
     public Connection getConnection(){
         return conn;
     }
-    public void DesConnection(){
-        if(conn == null){
-            System.out.println("Connection ended");
-        }
-    }
 
     public void closeConnection() {
         try {
             conn.close();
-            System.out.println("The DB was closed successfully.");
+            System.out.println("The DB was closed successfully.\n");
         } catch (SQLException e){
-            System.out.println("Error closing the DB.");
+            System.out.println("Error closing the DB.\n");
         };
     }
 }
