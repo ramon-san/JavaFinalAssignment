@@ -11,13 +11,12 @@ public class MainView extends JFrame {
     MainModel mainModel;
     int width = 1100;
     int height = 800;
-    double[] data = {10, 20, 41, 51, 63, 75, 81, 83, 1, 8, 45, 85, 23, 55, 54, 45, 45, 43, 32, 23, 2, 5};
     HeaderPanel header = new HeaderPanel();
     ThreeButtonsVertical buttons = new ThreeButtonsVertical();
     SystemInstructions instructions = new SystemInstructions();
     TwoInputAndEnter inputs = new TwoInputAndEnter();
 
-    /* We create our histogram graphs. */
+    /* We create our graphs. */
     NormalizedDistribution distribution = new NormalizedDistribution("Example");
     JPanel distributionGraph = new JPanel();
     public Histogram allHistogram, epocHistogram, diabetesHistogram, asmaHistogram;
@@ -44,7 +43,7 @@ public class MainView extends JFrame {
         add(instructions);
     }
 
-    public void makeDiseaseGraphs () {
+    public void makeGraphs () {
         /* Epoc histogram creation and implementation. */
         ArrayList<Byte> epocByteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "Epoc"));
         double[] epocResult = epocByteResult.stream().mapToDouble(Byte::doubleValue).toArray();
@@ -70,34 +69,5 @@ public class MainView extends JFrame {
         allHistogramGraph = allHistogram.makeHistogram();
         allHistogramGraph.setBounds(125, 200, 300,250);
         add(allHistogramGraph);
-    }
-
-    public void changeHistogram(String select){
-        switch (select){
-            case ("Epoc"):
-                System.out.println("Epoc button was clicked.");
-                remove(diabetesHistogramGraph);
-                remove(asmaHistogramGraph);
-                epocHistogramGraph.setBounds(675, 200, 300, 250);
-                add(epocHistogramGraph);
-                break;
-            case ("Diabetes"):
-                System.out.println("Diabetes button was clicked.");
-                remove(epocHistogramGraph);
-                remove(asmaHistogramGraph);
-                diabetesHistogramGraph.setBounds(675, 200, 300, 250);
-                add(diabetesHistogramGraph);
-                break;
-            case ("Asma"):
-                System.out.println("Asma button was clicked.");
-                remove(epocHistogramGraph);
-                remove(diabetesHistogramGraph);
-                asmaHistogramGraph.setBounds(675, 200, 300, 250);
-                add(asmaHistogramGraph);
-                break;
-            default:
-                System.out.println("Something went wrong in the process.");
-                break;
-        }
     }
 }

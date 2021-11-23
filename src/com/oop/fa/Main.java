@@ -5,7 +5,6 @@ import com.oop.fa.model.DBMS.ConnectDB;
 import com.oop.fa.model.DBMS.QueriesDB;
 import com.oop.fa.model.MainModel;
 import com.oop.fa.view.MainView;
-import com.sun.xml.internal.xsom.XSUnionSimpleType;
 
 public class Main {
 
@@ -23,7 +22,7 @@ public class Main {
         processManager.setFullResult(queries.getFullResultSet(conn));
         conn.closeConnection();
 
-        frame.makeDiseaseGraphs();
+        frame.makeGraphs();
         frame.setVisible(true);
     }
 }
