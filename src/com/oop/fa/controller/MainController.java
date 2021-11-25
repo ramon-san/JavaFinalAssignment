@@ -12,6 +12,7 @@ public class MainController implements ActionListener {
     private MainView mainView;
     private MainModel mainModel;
     public SwitchHistograms switcher;
+    public InputProbability dataInput;
 
     /* Constructor. */
     public MainController(MainView mainView, MainModel mainModel) {
@@ -37,6 +38,20 @@ public class MainController implements ActionListener {
         if (buttonClick.getSource() == ThreeButtonsVertical.buttonDiabetes) {
             switcher.changeHistogram("Diabetes");
             mainView.diabetesHistogramGraph.updateUI();
+        }
+        if (buttonClick.getSource() == TwoInputAndEnter.enterButton) {
+            String input1 = TwoInputAndEnter.field1.getText();
+            String input2 = TwoInputAndEnter.field2.getText();
+
+            if (input1.equals("") && input2.equals("")) {
+                TwoInputAndEnter.message.setText("Enter one input.");
+            } else if (input1.equals("") && !input2.equals("")) {
+                TwoInputAndEnter.message.setText("Calculating < " + TwoInputAndEnter.field2.getText());
+            } else if (!input1.equals("") && input2.equals("")) {
+                TwoInputAndEnter.message.setText("Calculating > " + TwoInputAndEnter.field1.getText());
+            } else {
+                TwoInputAndEnter.message.setText("One I said!");
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package com.oop.fa.view;
 
 import com.oop.fa.model.DataAnalysis;
 import com.oop.fa.model.MainModel;
+import com.oop.fa.model.Probability;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -36,9 +37,6 @@ public class MainView extends JFrame {
         add(buttons);
         inputs.setBounds(125, 475, 170, 250);
         add(inputs);
-        distributionGraph = distribution.makeNormalizedDistribution(0,1);
-        distributionGraph.setBounds(345, 475, 300, 250);
-        add(distributionGraph);
         instructions.setBounds(695, 475, 285, 250);
         add(instructions);
     }
@@ -69,5 +67,17 @@ public class MainView extends JFrame {
         allHistogramGraph = allHistogram.makeHistogram();
         allHistogramGraph.setBounds(125, 200, 300,250);
         add(allHistogramGraph);
+    }
+
+    public void makeNormalizedGraph (){
+        Probability probability = new Probability();
+        ArrayList<Byte> allByteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "All"));
+        double[] allResult = allByteResult.stream().mapToDouble(Byte::doubleValue).toArray();
+        mainModel.setMean(probability.mean(allResult));
+        mainModel.setStdev(probability.stdev(allResult));
+        distributionGraph = distribution.makeNormalizedDistribution(mainModel.getMean(), mainModel.getStdev(),
+                allByteResult.size());
+        distributionGraph.setBounds(345, 475, 300, 250);
+        add(distributionGraph);
     }
 }
