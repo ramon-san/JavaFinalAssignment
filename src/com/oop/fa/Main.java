@@ -23,6 +23,7 @@ public class Main {
         conn.closeConnection();
 
         frame.makeGraphs();
+        frame.makeNormalizedGraph();
         frame.setVisible(true);
     }
 }

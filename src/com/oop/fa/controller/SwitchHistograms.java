@@ -7,6 +7,7 @@ public class SwitchHistograms {
     private MainView mainView;
     private MainModel mainModel;
 
+    /* Constructor. */
     public SwitchHistograms(MainView mainView, MainModel mainModel) {
         this.mainView = mainView;
         this.mainModel = mainModel;
