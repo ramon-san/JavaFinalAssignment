@@ -69,14 +69,24 @@ public class MainView extends JFrame {
         add(allHistogramGraph);
     }
 
-    public void makeNormalizedGraph (){
+    public void setNormalizedGraph(){}
+
+    /*
+    * Development notes. You have to do the normalized graph correctly. You had open MainController, ValidateInput,
+    * InputProbability, MainView, NormalizedDistribution, and MainModel when you left off. The function above this
+    * one is a possible solution to the creation of the graph.
+    *
+    * */
+
+    public void makeNormalizedGraph () {
         Probability probability = new Probability();
         ArrayList<Byte> allByteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "All"));
         double[] allResult = allByteResult.stream().mapToDouble(Byte::doubleValue).toArray();
         mainModel.setMean(probability.mean(allResult));
         mainModel.setStdev(probability.stdev(allResult));
+        mainModel.setDataSize(allByteResult.size());
         distributionGraph = distribution.makeNormalizedDistribution(mainModel.getMean(), mainModel.getStdev(),
-                allByteResult.size());
+                mainModel.getDataSize());
         distributionGraph.setBounds(345, 475, 300, 250);
         add(distributionGraph);
     }
