@@ -1,6 +1,7 @@
 package com.oop.fa.controller;
 
 import com.oop.fa.model.MainModel;
+import com.oop.fa.model.ValidateInput;
 import com.oop.fa.view.MainView;
 import com.oop.fa.view.ThreeButtonsVertical;
 import com.oop.fa.view.TwoInputAndEnter;
@@ -25,6 +26,10 @@ public class MainController implements ActionListener {
         switcher = new SwitchHistograms(this.mainView, this.mainModel);
     }
 
+    public void setMainModel(MainModel mainModel) {
+        this.mainModel = mainModel;
+    }
+
     public void actionPerformed(ActionEvent buttonClick){
 
         if(buttonClick.getSource() == ThreeButtonsVertical.buttonEpoc){
@@ -40,17 +45,27 @@ public class MainController implements ActionListener {
             mainView.diabetesHistogramGraph.updateUI();
         }
         if (buttonClick.getSource() == TwoInputAndEnter.enterButton) {
-            String input1 = TwoInputAndEnter.field1.getText();
-            String input2 = TwoInputAndEnter.field2.getText();
+            String inputA = TwoInputAndEnter.fieldA.getText();
+            String inputB = TwoInputAndEnter.fieldB.getText();
+            boolean stateA = false;
+            boolean stateB = false;
 
-            if (input1.equals("") && input2.equals("")) {
-                TwoInputAndEnter.message.setText("Enter one input.");
-            } else if (input1.equals("") && !input2.equals("")) {
-                TwoInputAndEnter.message.setText("Calculating < " + TwoInputAndEnter.field2.getText());
-            } else if (!input1.equals("") && input2.equals("")) {
-                TwoInputAndEnter.message.setText("Calculating > " + TwoInputAndEnter.field1.getText());
+            if (!inputA.equals("") && !inputB.equals("")) {
+                int numberInputA = ValidateInput.validateInt(inputA);
+                int numberInputB = ValidateInput.validateInt(inputB);
+
+                if (numberInputA >= 0 && numberInputA <= 100) {
+                    stateA = true;
+                } else { TwoInputAndEnter.message.setText("A is not valid."); }
+                if (numberInputB >= 0 && numberInputB <= 100 && numberInputB > numberInputA) {
+                    stateB = true;
+                } else { TwoInputAndEnter.message.setText("B is not valid."); }
+
+                if (stateA && stateB) {
+                    InputProbability.getProbabilityGraph(mainModel, numberInputA, numberInputB);
+                }
             } else {
-                TwoInputAndEnter.message.setText("One I said!");
+                TwoInputAndEnter.message.setText("Enter (A < B).");
             }
         }
     }

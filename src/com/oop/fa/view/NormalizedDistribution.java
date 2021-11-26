@@ -32,7 +32,7 @@ public class NormalizedDistribution extends ApplicationFrame {
      * @param size of the array we are using (data points).
      * @return graph panel or null if not a valid graph.
      */
-    public JPanel makeNormalizedDistribution(double mean, double stdev, int size){
+    public JPanel makeNormalizedDistribution (double mean, double stdev, int size) {
 
         // Assign plot
         NumberAxis xAxis = new NumberAxis("Age");
@@ -42,10 +42,41 @@ public class NormalizedDistribution extends ApplicationFrame {
 
         // Assign plot type.
         Function2D normal = new NormalDistributionFunction2D(mean, stdev);
-        XYDataset dataset = DatasetUtilities.sampleFunction2D(normal, -10, 100, size, "Patient distribution");
-        /*XYSeries cutLine = new XYSeries("cutLine");
-        cutLine.add(40,0);
-        ((XYSeriesCollection) dataset).addSeries(cutLine);*/
+        XYDataset dataset = DatasetUtilities.sampleFunction2D(normal, -5, 100, size, "Patient distribution");
+        XYDifferenceRenderer renderer = new XYDifferenceRenderer();
+        XYPlot plot = new XYPlot(dataset, xAxis, yAxis, renderer);
+        JFreeChart chart = new JFreeChart(title, JFreeChart.DEFAULT_TITLE_FONT, plot, true);
+        ChartUtilities.applyCurrentTheme(chart);
+        ChartPanel chartPanel = new ChartPanel(chart);
+
+        return (chartPanel);
+    }
+
+    /**
+     * This function makes a normalized distribution graph with a lower and upper limit.
+     *
+     * @param mean of the data points we're using.
+     * @param stdev of the data points we're using.
+     * @param size of the array we are using (data points).
+     * @param lowerLimit of our cutting point.
+     * @param upperLimit of our cutting point.
+     * @return graph panel or null if not a valid graph.
+     */
+    public JPanel makeNormalizedDistribution (double mean, double stdev, int size, int lowerLimit, int upperLimit) {
+
+        // Assign plot
+        NumberAxis xAxis = new NumberAxis("Age");
+        xAxis.setAutoRangeIncludesZero(false);
+        NumberAxis yAxis = new NumberAxis("Probability");
+        yAxis.setAutoRangeIncludesZero(false);
+
+        // Assign plot type.
+        Function2D normal = new NormalDistributionFunction2D(mean, stdev);
+        XYDataset dataset = DatasetUtilities.sampleFunction2D(normal, -5, 100, size, "Patient distribution");
+        XYSeries fLine = new XYSeries("fLine");
+        fLine.add(lowerLimit, 0);
+        fLine.add(upperLimit, 0);
+        ((XYSeriesCollection) dataset).addSeries(fLine);
         XYDifferenceRenderer renderer = new XYDifferenceRenderer();
         XYPlot plot = new XYPlot(dataset, xAxis, yAxis, renderer);
         JFreeChart chart = new JFreeChart(title, JFreeChart.DEFAULT_TITLE_FONT, plot, true);

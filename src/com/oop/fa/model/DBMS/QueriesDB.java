@@ -14,7 +14,7 @@ public class QueriesDB {
 
         try{
             Statement fullResult = connection.conn.createStatement();
-            fullResult.execute("SELECT * FROM originaldata WHERE Age <= 110");
+            fullResult.execute("SELECT * FROM originaldata WHERE Age <= 100");
             ResultSet resultSet = fullResult.getResultSet();
             while (resultSet.next()) {
                 byte age = resultSet.getByte(1);

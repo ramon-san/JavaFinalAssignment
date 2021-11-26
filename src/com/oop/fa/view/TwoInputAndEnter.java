@@ -5,12 +5,12 @@ import java.awt.*;
 
 public class TwoInputAndEnter extends JPanel {
     JLabel title = new JLabel("Input data", SwingConstants.CENTER);
-    JLabel label1 = new JLabel(">");
-    public static JTextField field1 = new JTextField("");
-    JLabel label2 = new JLabel("<");
-    public static JTextField field2 = new JTextField("");
+    JLabel label1 = new JLabel("A:");
+    public static JTextField fieldA = new JTextField("");
+    JLabel label2 = new JLabel("B:");
+    public static JTextField fieldB = new JTextField("");
     public static JButton enterButton = new JButton("Enter");
-    public static JLabel message = new JLabel("Enter one input.");
+    public static JLabel message = new JLabel("Enter (A < B).");
 
     public TwoInputAndEnter(){
         this.setLayout(null);
@@ -21,12 +21,12 @@ public class TwoInputAndEnter extends JPanel {
         add(title);
         label1.setBounds(25,70,20,25);
         add(label1);
-        field1.setBounds(45, 70,100,25);
-        add(field1);
+        fieldA.setBounds(45, 70,100,25);
+        add(fieldA);
         label2.setBounds(25,120,20,25);
         add(label2);
-        field2.setBounds(45,120,100,25);
-        add(field2);
+        fieldB.setBounds(45,120,100,25);
+        add(fieldB);
         enterButton.setBounds(45,165,100,40);
         add(enterButton);
         message.setBounds(25, 215, 120, 25);
