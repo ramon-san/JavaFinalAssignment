@@ -18,10 +18,9 @@ public class MainView extends JFrame {
     TwoInputAndEnter inputs = new TwoInputAndEnter();
 
     /* We create our graphs. */
-    NormalizedDistribution distribution = new NormalizedDistribution("Example");
-    JPanel distributionGraph = new JPanel();
     public Histogram allHistogram, epocHistogram, diabetesHistogram, asmaHistogram;
-    public JPanel allHistogramGraph, epocHistogramGraph, diabetesHistogramGraph, asmaHistogramGraph;
+    public NormalizedDistribution distribution = new NormalizedDistribution("Normalized Graph");
+    public JPanel allHistogramGraph, epocHistogramGraph, diabetesHistogramGraph, asmaHistogramGraph, distributionGraph;
 
     public MainView(MainModel mainModel) {
         setLayout(null);
@@ -69,15 +68,6 @@ public class MainView extends JFrame {
         add(allHistogramGraph);
     }
 
-    public void setNormalizedGraph(){}
-
-    /*
-    * Development notes. You have to do the normalized graph correctly. You had open MainController, ValidateInput,
-    * InputProbability, MainView, NormalizedDistribution, and MainModel when you left off. The function above this
-    * one is a possible solution to the creation of the graph.
-    *
-    * */
-
     public void makeNormalizedGraph () {
         Probability probability = new Probability();
         ArrayList<Byte> allByteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "All"));
@@ -87,6 +77,13 @@ public class MainView extends JFrame {
         mainModel.setDataSize(allByteResult.size());
         distributionGraph = distribution.makeNormalizedDistribution(mainModel.getMean(), mainModel.getStdev(),
                 mainModel.getDataSize());
+        distributionGraph.setBounds(345, 475, 300, 250);
+        add(distributionGraph);
+    }
+
+    public void changeNormalizedGraph(JPanel newGraph) {
+        remove(distributionGraph);
+        distributionGraph = newGraph;
         distributionGraph.setBounds(345, 475, 300, 250);
         add(distributionGraph);
     }

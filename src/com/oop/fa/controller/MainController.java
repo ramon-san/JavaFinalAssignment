@@ -1,6 +1,7 @@
 package com.oop.fa.controller;
 
 import com.oop.fa.model.MainModel;
+import com.oop.fa.model.Probability;
 import com.oop.fa.model.ValidateInput;
 import com.oop.fa.view.MainView;
 import com.oop.fa.view.ThreeButtonsVertical;
@@ -24,6 +25,7 @@ public class MainController implements ActionListener {
         ThreeButtonsVertical.buttonAsma.addActionListener(this);
         TwoInputAndEnter.enterButton.addActionListener(this);
         switcher = new SwitchHistograms(this.mainView, this.mainModel);
+        dataInput = new InputProbability(this.mainView, this.mainModel);
     }
 
     public void setMainModel(MainModel mainModel) {
@@ -49,6 +51,7 @@ public class MainController implements ActionListener {
             String inputB = TwoInputAndEnter.fieldB.getText();
             boolean stateA = false;
             boolean stateB = false;
+            double result;
 
             if (!inputA.equals("") && !inputB.equals("")) {
                 int numberInputA = ValidateInput.validateInt(inputA);
@@ -62,7 +65,11 @@ public class MainController implements ActionListener {
                 } else { TwoInputAndEnter.message.setText("B is not valid."); }
 
                 if (stateA && stateB) {
-                    InputProbability.getProbabilityGraph(mainModel, numberInputA, numberInputB);
+                    result = Probability.densityFunction(mainModel.getMean(), mainModel.getStdev(), numberInputA,
+                            numberInputB);
+                    String displayNumber = String.format("%.3f",  result);
+                    TwoInputAndEnter.message.setText("P(A, B) = " + displayNumber + "%");
+                    dataInput.getProbabilityGraph(numberInputA, numberInputB);
                 }
             } else {
                 TwoInputAndEnter.message.setText("Enter (A < B).");

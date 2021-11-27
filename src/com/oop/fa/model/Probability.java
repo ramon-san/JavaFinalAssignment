@@ -1,5 +1,8 @@
 package com.oop.fa.model;
 
+import javax.sound.midi.SysexMessage;
+import java.math.BigDecimal;
+
 public class Probability {
     private float mean;
 
@@ -50,8 +53,25 @@ public class Probability {
         return(stdev);
     }
 
+    /**
+     * This method calculates the density function of the given data. The result is given as a percentage.
+     * @param mean of our data set.
+     * @param stdev of our data set.
+     * @param lowerLimit of our probability.
+     * @param upperLimit of our probability.
+     * @return result of our density function as a percentage, this is the probability.
+     */
+    public static double densityFunction(double mean, double stdev, int lowerLimit, int upperLimit) {
+        double delta = .001, integral = 0, result = 0, zValue = 0;
+                /*lowerResult = 0, upperResult = 0, lowerIntegral = 0, upperIntegral = 0;*/
+        double i;
 
-    public static void densityFunction(){
+        for (i = lowerLimit; i <= upperLimit; i += delta) {
+            zValue = (i-mean)/stdev;
+            integral += (Math.exp(-.5*(Math.pow(zValue, 2))));
+        }
+        result = ((1/(stdev*Math.sqrt(2*Math.PI)))*integral)/10;
 
+        return(result);
     }
 }

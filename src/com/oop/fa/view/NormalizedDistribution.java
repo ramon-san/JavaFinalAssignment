@@ -42,7 +42,8 @@ public class NormalizedDistribution extends ApplicationFrame {
 
         // Assign plot type.
         Function2D normal = new NormalDistributionFunction2D(mean, stdev);
-        XYDataset dataset = DatasetUtilities.sampleFunction2D(normal, -5, 100, size, "Patient distribution");
+        XYDataset dataset = DatasetUtilities.sampleFunction2D(normal, (mean-50), (mean+50), size, "Patient " +
+                "distribution");
         XYDifferenceRenderer renderer = new XYDifferenceRenderer();
         XYPlot plot = new XYPlot(dataset, xAxis, yAxis, renderer);
         JFreeChart chart = new JFreeChart(title, JFreeChart.DEFAULT_TITLE_FONT, plot, true);
@@ -72,8 +73,9 @@ public class NormalizedDistribution extends ApplicationFrame {
 
         // Assign plot type.
         Function2D normal = new NormalDistributionFunction2D(mean, stdev);
-        XYDataset dataset = DatasetUtilities.sampleFunction2D(normal, -5, 100, size, "Patient distribution");
-        XYSeries fLine = new XYSeries("fLine");
+        XYDataset dataset = DatasetUtilities.sampleFunction2D(normal, (mean-50), (mean+50), size, "Patient " +
+                "distribution");
+        XYSeries fLine = new XYSeries("Area");
         fLine.add(lowerLimit, 0);
         fLine.add(upperLimit, 0);
         ((XYSeriesCollection) dataset).addSeries(fLine);
