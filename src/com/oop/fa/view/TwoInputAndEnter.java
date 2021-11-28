@@ -12,6 +12,7 @@ public class TwoInputAndEnter extends JPanel {
     public static JButton enterButton = new JButton("Enter");
     public static JLabel message = new JLabel("Enter (A < B).");
 
+    /* Constructor. */
     public TwoInputAndEnter(){
         this.setLayout(null);
         this.setBackground(Color.LIGHT_GRAY);

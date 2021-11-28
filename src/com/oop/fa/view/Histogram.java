@@ -24,11 +24,11 @@ public class Histogram extends ApplicationFrame {
         this.bins = bins;
     }
 
-    /* Setter and Getter functions. */
-    public void setValues(double[] values) {
-        this.values = values;
-    }
-
+    /**
+     * This function creates a histogram given certain parameters.
+     *
+     * @return JPanel of our new histogram.
+     */
     public JPanel makeHistogram(){
 
         // Assign values to set

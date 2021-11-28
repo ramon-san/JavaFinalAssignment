@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 public class NormalizedDistribution extends ApplicationFrame {
     String title;
 
+    /* Constructor. */
     public NormalizedDistribution(String title) {
         super("");
         this.title = title;

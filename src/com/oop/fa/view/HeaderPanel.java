@@ -14,6 +14,7 @@ public class HeaderPanel extends JPanel {
     Image scaledImage = image.getScaledInstance(imageWidth, imageHeight, Image.SCALE_SMOOTH);
     ImageIcon scaledLogo = new ImageIcon(scaledImage);
 
+    /* Constructor. */
     public HeaderPanel(){
         setLayout(null);
         title.setBounds(100, 100, 500,50);

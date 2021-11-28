@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 public class Probability {
     private float mean;
 
+    /* Setters and Getters. */
     public void setMean(float mean) {
         this.mean = mean;
     }
@@ -55,6 +56,7 @@ public class Probability {
 
     /**
      * This method calculates the density function of the given data. The result is given as a percentage.
+     *
      * @param mean of our data set.
      * @param stdev of our data set.
      * @param lowerLimit of our probability.
@@ -62,9 +64,7 @@ public class Probability {
      * @return result of our density function as a percentage, this is the probability.
      */
     public static double densityFunction(double mean, double stdev, int lowerLimit, int upperLimit) {
-        double delta = .001, integral = 0, result = 0, zValue = 0;
-                /*lowerResult = 0, upperResult = 0, lowerIntegral = 0, upperIntegral = 0;*/
-        double i;
+        double delta = .001, integral = 0, result = 0, zValue = 0, i;
 
         for (i = lowerLimit; i <= upperLimit; i += delta) {
             zValue = (i-mean)/stdev;

@@ -13,7 +13,12 @@ public class SwitchHistograms {
         this.mainModel = mainModel;
     }
 
-   public void changeHistogram(String select){
+    /**
+     * This function changes the histogram in the UI after a particular button is clicked.
+     *
+     * @param select name of the histogram we want to display
+     */
+    public void changeHistogram(String select){
         switch (select){
             case ("Epoc"):
                 System.out.println("Epoc button was clicked.");

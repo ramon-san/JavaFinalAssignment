@@ -10,6 +10,7 @@ public class ThreeButtonsVertical extends JPanel {
     public static JButton buttonDiabetes = new JButton("DIABETES");
     public static JButton buttonAsma = new JButton("ASMA");
 
+    /* Constructor. */
     public ThreeButtonsVertical(){
         this.setLayout(null);
         this.setBackground(Color.LIGHT_GRAY);
