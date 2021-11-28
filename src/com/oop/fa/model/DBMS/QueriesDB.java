@@ -9,6 +9,13 @@ import java.util.ArrayList;
 
 public class QueriesDB {
 
+    /**
+     * This function gets the full result set of our DB. In this particular use case we get all patients with valid
+     * ages. The query used for this result set can be seen inside of this function's code.
+     *
+     * @param connection to our DB.
+     * @return result set of our query given as a PatientData ArrayList.
+     */
     public ArrayList<PatientData> getFullResultSet(ConnectDB connection) {
         ArrayList <PatientData> list = new ArrayList<>();
 

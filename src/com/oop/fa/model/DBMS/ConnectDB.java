@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ConnectDB {
     static Connection conn;
@@ -13,6 +12,10 @@ public class ConnectDB {
     private static final String password = "root";
     private static final String url = "jdbc:mysql://localhost:8889/FinalAssignment?useSSL=no";
 
+    /**
+     * This function creates a connection to the DB with the values given to the attributes in this class.
+     *
+     */
     public ConnectDB(){
         try{
             Class.forName(driver);
@@ -30,11 +33,10 @@ public class ConnectDB {
         }
     }
 
-    // We test the connection from another class.
-    public Connection getConnection(){
-        return conn;
-    }
-
+    /**
+     * This function closes the connection to the DB we opened with ConnectDB.
+     *
+     */
     public void closeConnection() {
         try {
             conn.close();

@@ -9,8 +9,7 @@ public class SystemInstructions extends JPanel {
            " If you click a disease button you'll see the histogram of people with that disease and if you give valid" +
            " inputs and click Enter in the Input Data section you'll see the probability of what you chose.");
 
-
-
+    /* Constructor. */
     public SystemInstructions(){
         this.setLayout(null);
         this.setBackground(Color.LIGHT_GRAY);

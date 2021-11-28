@@ -40,6 +40,10 @@ public class MainView extends JFrame {
         add(instructions);
     }
 
+    /**
+     * In this function we create all our static graphs.
+     *
+     */
     public void makeGraphs () {
         /* Epoc histogram creation and implementation. */
         ArrayList<Byte> epocByteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "Epoc"));
@@ -68,6 +72,11 @@ public class MainView extends JFrame {
         add(allHistogramGraph);
     }
 
+    /**
+     * In this function we create our first normalized graph and assign values to our mean, stdev, and dataSize
+     * attributes from the mainModel instance.
+     *
+     */
     public void makeNormalizedGraph () {
         Probability probability = new Probability();
         ArrayList<Byte> allByteResult = (DataAnalysis.listExtraction(mainModel.getFullResult(), "All"));
@@ -81,6 +90,11 @@ public class MainView extends JFrame {
         add(distributionGraph);
     }
 
+    /**
+     * This function changes the normalized graph in display.
+     *
+     * @param newGraph that we want to display.
+     */
     public void changeNormalizedGraph(JPanel newGraph) {
         remove(distributionGraph);
         distributionGraph = newGraph;

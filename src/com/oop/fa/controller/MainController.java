@@ -28,10 +28,11 @@ public class MainController implements ActionListener {
         dataInput = new InputProbability(this.mainView, this.mainModel);
     }
 
-    public void setMainModel(MainModel mainModel) {
-        this.mainModel = mainModel;
-    }
-
+    /**
+     * This function waits for any button on the UI to be clicked and does an action following this.
+     *
+     * @param buttonClick this variable is the action of clicking a button.
+     */
     public void actionPerformed(ActionEvent buttonClick){
 
         if(buttonClick.getSource() == ThreeButtonsVertical.buttonEpoc){

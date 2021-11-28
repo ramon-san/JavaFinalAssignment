@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 public class DataAnalysis {
 
+    /**
+     * We analyse the data obtained from our DB and arrange it according to the searched attribute.
+     *
+     * @param data result set of our query.
+     * @param search value we want to obtain.
+     * @return ArrayList of the filtered data according to the search field.
+     */
     public static ArrayList <Byte> listExtraction(ArrayList<PatientData> data, String search) {
         ArrayList <Byte> result  = new ArrayList<>();
 
