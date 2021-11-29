@@ -22,6 +22,7 @@ public class MainView extends JFrame {
     public NormalizedDistribution distribution = new NormalizedDistribution("Normalized Graph");
     public JPanel allHistogramGraph, epocHistogramGraph, diabetesHistogramGraph, asmaHistogramGraph, distributionGraph;
 
+    /* Constructor. */
     public MainView(MainModel mainModel) {
         setLayout(null);
         setSize(width, height);

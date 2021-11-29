@@ -1,3 +1,8 @@
+/**
+ * This Main contains our main Java function.
+ *
+ * @version 1.0
+ */
 package com.oop.fa;
 
 import com.oop.fa.controller.MainController;
