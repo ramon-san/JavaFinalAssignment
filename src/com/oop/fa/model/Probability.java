@@ -1,8 +1,5 @@
 package com.oop.fa.model;
 
-import javax.sound.midi.SysexMessage;
-import java.math.BigDecimal;
-
 public class Probability {
     private float mean;
 
@@ -64,9 +61,9 @@ public class Probability {
      * @return result of our density function as a percentage, this is the probability.
      */
     public static double densityFunction(double mean, double stdev, int lowerLimit, int upperLimit) {
-        double delta = .001, integral = 0, result = 0, zValue = 0, i;
+        double delta = .001, integral = 0, result = 0, zValue = 0;
 
-        for (i = lowerLimit; i <= upperLimit; i += delta) {
+        for (double i = lowerLimit; i <= upperLimit; i += delta) {
             zValue = (i-mean)/stdev;
             integral += (Math.exp(-.5*(Math.pow(zValue, 2))));
         }
