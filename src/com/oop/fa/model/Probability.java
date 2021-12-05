@@ -64,8 +64,8 @@ public class Probability {
         double delta = .001, integral = 0, result = 0, zValue = 0;
 
         for (double i = lowerLimit; i <= upperLimit; i += delta) {
-            zValue = (i-mean)/stdev;
-            integral += (Math.exp(-.5*(Math.pow(zValue, 2))));
+            // zValue = (i-mean)/stdev;
+            integral += (Math.exp(-.5*(Math.pow(((i-mean)/stdev), 2))));
         }
         result = ((1/(stdev*Math.sqrt(2*Math.PI)))*integral)/10;
 

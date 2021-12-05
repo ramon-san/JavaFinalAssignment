@@ -18,7 +18,7 @@ public class Main {
 
         MainModel processManager = new MainModel();
         MainView frame = new MainView(processManager);
-        MainController orchestrator = new MainController(frame, processManager);
+        MainController orchestrator = new MainController(frame, processManager); // Don't erase.
 
         /* We know connect to the DB. */
         ConnectDB conn = new ConnectDB();
